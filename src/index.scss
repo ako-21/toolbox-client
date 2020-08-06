@@ -1,1 +1,72 @@
+
+$theme-colors: (
+  'primary': #a7bc5be6,
+  'secondary': #8da242,
+  'third': #1d2228
+);
+
+.logo {
+  margin-bottom: -20px;
+}
+
+.sign-in {
+  margin-right: 80px;
+}
+
+.hometxt {
+  font-size: 2vw;
+}
+
+.row-rounded {
+  background: #fffffff2;
+  border-radius: 15px 50px 30px;
+  margin: 20%;
+  padding-bottom: 6%;
+  padding-top: 2%;
+}
+
+.row-rounded-home {
+  background: #fffffff2;
+  border-radius: 8%;
+  margin-top: 20%;
+  padding-bottom: 4%;
+  padding-top: 4%;
+  border-color: #8da242;
+  border-style: solid;
+  border-radius: 15%;
+  text-align: center;
+}
+
+.bubble {
+  background-color: white;
+  font-size: 2vw;
+  color: white;
+  border-radius: 40%;
+  width: 8%;
+  height: auto;
+  margin-left: 10%;
+  border-color: #8da242;
+  border-style: solid;
+  border-radius: 40%;
+}
+
+.small-bubble {
+  background-color: white;
+  font-size: 1vw;
+  color: white;
+  border-radius: 40%;
+  width: 4%;
+  height: auto;
+  margin-left: 6%;
+  border-color: #8da242;
+  border-style: solid;
+  border-radius: 40%;
+}
+
+body {
+  background-image: url('./images/backgroundimage.jpg');
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
 @import '~bootstrap/scss/bootstrap';
