@@ -2,7 +2,10 @@
 $theme-colors: (
   'primary': #a7bc5be6,
   'secondary': #8da242,
-  'third': #1d2228
+  'third': #1d2228,
+  'fourth': #a7bc5b,
+  'dark': #8da242,
+  'light': #8da242
 );
 
 .logo {
@@ -14,7 +17,32 @@ $theme-colors: (
 }
 
 .hometxt {
+  font-size: 3vw;
+}
+
+.font {
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+.tbl {
   font-size: 2vw;
+}
+.round {
+  border-style: solid;
+  border-radius: 10px;
+  border-color: #1d2228;
+}
+.add {
+  font-size: 4vw;
+  text-align: center;
+  color: #1d2228;
+  width: 100%;
+}
+.heading {
+  font-size: 3vw;
+  padding-left: 3%;
+  padding-top: 1%;
+  color: #1d2228;
 }
 
 .row-rounded {
@@ -70,3 +98,4 @@ body {
 }
 
 @import '~bootstrap/scss/bootstrap';
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
