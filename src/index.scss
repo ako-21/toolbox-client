@@ -4,6 +4,7 @@ $theme-colors: (
   'secondary': #8da242,
   'third': #1d2228,
   'fourth': #a7bc5b,
+  'fifth': #8da242e6,
   'dark': #8da242,
   'light': #8da242
 );
@@ -36,6 +37,9 @@ $theme-colors: (
   font-size: 4vw;
   text-align: center;
   color: #1d2228;
+  width: 100%;
+}
+.full-width {
   width: 100%;
 }
 .heading {
@@ -78,6 +82,10 @@ $theme-colors: (
   border-radius: 40%;
 }
 
+.cancel {
+  width: 6%;
+}
+
 .small-bubble {
   background-color: white;
   font-size: 1vw;
@@ -95,6 +103,7 @@ body {
   background-image: url('./images/backgroundimage.jpg');
   background-size: 100%;
   background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 @import '~bootstrap/scss/bootstrap';

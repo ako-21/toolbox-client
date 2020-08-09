@@ -26,7 +26,7 @@ const unauthenticatedOptions = (
 
 const Header = ({ user }) => (
   <Navbar bg="primary" variant="dark" expand="md">
-    <Navbar.Brand href="#">
+    <Navbar.Brand href="#projects">
       <img src={Logo} alt="logo" className="logo" />
     </Navbar.Brand>
     <Navbar.Toggle aria-controls="basic-navbar-nav" />

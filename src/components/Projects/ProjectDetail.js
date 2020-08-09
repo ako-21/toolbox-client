@@ -2,14 +2,76 @@ import React from 'react'
 import axios from 'axios'
 import apiUrl from './../../apiConfig'
 import { Redirect, withRouter } from 'react-router-dom'
+import Form from 'react-bootstrap/Form'
+import Col from 'react-bootstrap/Col'
+import Button from 'react-bootstrap/Button'
+import Modal from 'react-bootstrap/Modal'
 
 class ProjectDetail extends React.Component {
   state = {
-    project: null,
-    deleted: false
+    project: {
+      name: '',
+      description: '',
+      budget: '',
+      spent: ''
+    },
+    deleted: false,
+    show: false,
+    updated: false,
+    cancel: false
+  }
+
+handleCancel = () => {
+  this.setState({
+    cancel: true
+  })
+}
+handleInputChange = () => {
+  const projectKey = event.target.name
+  const value = event.target.value
+  const projectCopy = Object.assign({}, this.state.project)
+  projectCopy[projectKey] = value
+  this.setState({ project: projectCopy })
+}
+handleSubmit = () => {
+  event.preventDefault()
+  this.setState({ project: {
+    name: this.state.project.name,
+    description: this.state.project.description,
+    budget: this.state.project.budget,
+    spent: this.state.project.spent
+  }
+  })
+  axios({
+    method: 'PATCH',
+    url: apiUrl + '/projects/' + this.props.match.params.id,
+    headers: {
+      'Authorization': `Bearer ${this.props.user.token}`
+    },
+    data: {
+      project: this.state.project
+    }
+  })
+    .then(this.setState({
+      updated: true
+    }))
+}
+
+  deleteProject = (event) => {
+    axios({
+      method: 'DELETE',
+      url: apiUrl + '/projects/' + this.props.match.params.id,
+      headers: {
+        'Authorization': `Bearer ${this.props.user.token}`
+      }
+    })
+      // .then(() => this.closeModal())
+      .then(this.setState({
+        show: false,
+        deleted: true
+      }))
   }
   componentDidMount () {
-    console.log(this.props)
     return axios({
       url: `${apiUrl}/projects/${this.props.match.params.id}`,
       method: 'GET',
@@ -19,14 +81,22 @@ class ProjectDetail extends React.Component {
     })
       .then(response => {
         this.setState({
-          project: response.data.project
+          project: {
+            name: response.data.project.name,
+            description: response.data.project.description,
+            budget: response.data.project.budget,
+            spent: response.data.project.spent
+          }
         })
       })
       .catch(error => console.log(error))
   }
   render () {
-    if (this.state.deleted === true) {
+    if (this.state.updated === true || this.state.cancel === true) {
       return <Redirect to='/projects' />
+    }
+    if (this.state.deleted === true) {
+      return <Redirect to={{ pathname: '/projects', state: { updated: this.props.location.state.updated } }} />
     }
     let jsx
     if (this.state.project === null) {
@@ -34,10 +104,91 @@ class ProjectDetail extends React.Component {
     } else {
       jsx = (
         <div>
-          {this.state.project.name}
-          {this.state.project.description}
-          {this.state.project.budget}
-          {this.state.project.spent}
+          <br />
+          <div className="bg-fourth mt-5 mb-3 font heading round">
+            Your DIY Project  &nbsp;  &apos;{this.state.project.name}&apos;
+          </div>
+          <Form className="bg-fifth round mb-5" onSubmit={this.handleSubmit}>
+            <Form.Row className="d-flex flex-column align-items-end">
+              <Button variant="third" size="sm" className="cancel mr-1" onClick={this.handleCancel}>X</Button>
+            </Form.Row>
+            <Form.Row className="mb-3 mt-4 d-flex flex-column align-items-center">
+              <Col lg={10}>
+                <Form.Label className="font tbl">
+                Name
+                </Form.Label>
+                <Form.Control
+                  onChange={this.handleInputChange}
+                  value={this.state.project.name}
+                  name="name"
+                  placeholder="Project Name"
+                  required={true} />
+              </Col>
+            </Form.Row>
+            <Form.Row className="mb-3 d-flex flex-column align-items-center">
+              <Col lg={10}>
+                <Form.Label className="font tbl">
+               Description
+                </Form.Label>
+                <Form.Control as="textarea" rows="4"
+                  onChange={this.handleInputChange}
+                  value={this.state.project.description}
+                  type="textarea"
+                  name="description"
+                  className="description"
+                  placeholder="Project Description"
+                  required={true} />
+              </Col>
+            </Form.Row>
+            <Form.Row className="mb-3 d-flex flex-column align-items-center">
+              <Col lg={10} className="mb-3">
+                <Form.Label className="font tbl">
+                Budget
+                </Form.Label>
+                <Form.Control
+                  onChange={this.handleInputChange}
+                  value={this.state.project.budget}
+                  name="budget"
+                  type="number"
+                  placeholder="Your Budget"
+                  required={true} />
+              </Col>
+              <Col lg={10}>
+                <Form.Label className="font tbl">
+                Spent
+                </Form.Label>
+                <Form.Control
+                  onChange={this.handleInputChange}
+                  value={this.state.project.spent}
+                  name="spent"
+                  type="number"
+                  placeholder="Amount Spent"
+                  required={true} />
+              </Col>
+            </Form.Row>
+            <Form.Row className="mb-5 mt-4 d-flex flex-row justify-content-center">
+              <Button className="mr-4" type="submit" variant="fourth" size="large">Submit Edit</Button>
+              <Button variant="danger" size="large" onClick={() => {
+                this.setState({
+                  show: true
+                })
+              }}>Delete</Button>
+            </Form.Row>
+          </Form>
+          <Modal show={this.state.show}
+            aria-labelledby="contained-modal-title-vcenter"
+            centered >
+            <Modal.Header className="d-flex justify-content-center">
+              <Modal.Title>Delete Project</Modal.Title>
+            </Modal.Header>
+            <Modal.Body className="d-flex justify-content-center font">
+              Are you sure you want to delete &apos;{this.state.project.name}&apos; ?
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant="fourth" className="mr-2" onClick={this.closeModal}>Cancel</Button>
+              <Button variant="danger" onClick={this.deleteProject}>Yes, Delete</Button>
+            </Modal.Footer>
+          </Modal>
         </div>
       )
     }
