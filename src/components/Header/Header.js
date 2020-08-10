@@ -25,14 +25,14 @@ const unauthenticatedOptions = (
 // )
 
 const Header = ({ user }) => (
-  <Navbar bg="primary" variant="dark" expand="md">
+  <Navbar bg="primary" variant="light" expand="md">
     <Navbar.Brand href="#projects">
       <img src={Logo} alt="logo" className="logo" />
     </Navbar.Brand>
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">
       <Nav className="ml-auto">
-        { user && <span className="navbar-text mr-2">Welcome, {user.email}</span>}
+        { user && <span className="navbar-text mr-2">Welcome {user.name}!</span>}
         {/*    { alwaysOptions } */}
         { user ? authenticatedOptions : unauthenticatedOptions }
       </Nav>
