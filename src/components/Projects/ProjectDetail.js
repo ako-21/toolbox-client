@@ -6,6 +6,7 @@ import Form from 'react-bootstrap/Form'
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
+import messages from './../AutoDismissAlert/messages'
 
 class ProjectDetail extends React.Component {
   state = {
@@ -52,8 +53,18 @@ handleSubmit = () => {
       project: this.state.project
     }
   })
+    .then(() => this.props.msgAlert({
+      heading: 'Update Success',
+      message: messages.updateSuccess,
+      variant: 'success'
+    }))
     .then(this.setState({
       updated: true
+    }))
+    .catch(() => this.props.location.props.msgAlert({
+      heading: 'Update Failure',
+      message: messages.updateFailure,
+      variant: 'danger'
     }))
 }
 
@@ -65,9 +76,12 @@ handleSubmit = () => {
         'Authorization': `Bearer ${this.props.user.token}`
       }
     })
-      // .then(() => this.closeModal())
+      .then(() => this.props.location.props.msgAlert({
+        heading: 'Delete Success',
+        message: messages.deleteSuccess,
+        variant: 'success'
+      }))
       .then(this.setState({
-        show: false,
         deleted: true
       }))
   }

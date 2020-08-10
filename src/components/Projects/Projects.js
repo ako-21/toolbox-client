@@ -76,7 +76,7 @@ class Projects extends React.Component {
                 <Modal.Title>Create a Project</Modal.Title>
               </Modal.Header>
               <Modal.Body>
-                <Create getRequest={this.getRequest} user={this.props.user} projects={this.state.projects} closeModal={this.closeModal}>
+                <Create getRequest={this.getRequest} msgAlert={this.props.msgAlert} user={this.props.user} projects={this.state.projects} closeModal={this.closeModal}>
                 </Create>
               </Modal.Body>
               <Modal.Footer>
@@ -103,15 +103,15 @@ class Projects extends React.Component {
                 {this.state.projects.reverse().map(project => (
                   <tr key={project._id} id={project._id}>
                     <td>
-                      <Project updated={this.state.updated} getRequest={this.getRequest} id={project._id} value={project.name}
+                      <Project updated={this.state.updated} msgAlert={this.props.msgAlert} getRequest={this.getRequest} id={project._id} value={project.name}
                       />
                     </td>
                     <td>
-                      <Project updated={this.state.update} getRequest={this.getRequest} id={project._id} value={project.budget}
+                      <Project updated={this.state.update} msgAlert={this.props.msgAlert} getRequest={this.getRequest} id={project._id} value={project.budget}
                       />
                     </td>
                     <td>
-                      <Project updated={this.state.updated} getRequest={this.getRequest} id={project._id} value={project.spent}
+                      <Project updated={this.state.updated} msgAlert={this.props.msgAlert} getRequest={this.getRequest} id={project._id} value={project.spent}
                       />
                     </td>
                   </tr>
@@ -132,7 +132,7 @@ class Projects extends React.Component {
                 <Modal.Title>Create a Project</Modal.Title>
               </Modal.Header>
               <Modal.Body>
-                <Create getRequest={this.getRequest} user={this.props.user} projects={this.state.projects} closeModal={this.closeModal}>
+                <Create getRequest={this.getRequest} msgAlert={this.props.msgAlert} user={this.props.user} projects={this.state.projects} closeModal={this.closeModal}>
                 </Create>
               </Modal.Body>
               <Modal.Footer>

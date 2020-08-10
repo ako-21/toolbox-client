@@ -8,7 +8,7 @@ class Project extends React.Component {
   }
   render () {
     if (this.state.selected === true) {
-      return <Redirect to={{ pathname: '/projects/' + this.state.id, state: { updated: this.props.updated }, props: { getRequest: this.props.getRequest } }}/>
+      return <Redirect to={{ pathname: '/projects/' + this.state.id, state: { updated: this.props.updated }, props: { msgAlert: this.props.msgAlert } }}/>
     }
     return (
       <p onClick={ event => {

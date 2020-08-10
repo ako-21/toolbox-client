@@ -4,6 +4,7 @@ import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
 import axios from 'axios'
 import apiUrl from './../../apiConfig'
+import messages from './../AutoDismissAlert/messages'
 
 class Create extends React.Component {
     state = {
@@ -41,8 +42,18 @@ class Create extends React.Component {
           project: this.state.project
         }
       })
+        .then(() => this.props.msgAlert({
+          heading: 'Create Success',
+          message: messages.createSuccess,
+          variant: 'success'
+        }))
         .then(() => this.props.getRequest())
         .then(() => this.props.closeModal())
+        .catch(() => this.props.msgAlert({
+          heading: 'Create Failure',
+          message: messages.createFailure,
+          variant: 'danger'
+        }))
     }
 
     render () {
@@ -71,7 +82,7 @@ class Create extends React.Component {
                   required={true} />
               </Col>
             </Form.Row>
-            <Form.Row className="mb-2">
+            <Form.Row className="mb-3">
               <Col>
                 <Form.Control
                   onChange={this.handleInputChange}
@@ -92,7 +103,8 @@ class Create extends React.Component {
               </Col>
             </Form.Row>
             <Form.Row>
-              <Button className="ml-1 mt-1" type="submit" variant="light" size="large">Add</Button>
+              <Button className="ml-1 mt-1" type="submit" variant="light" size="md">Add</Button>
+              <Button className="ml-2" variant="third" size="md" type="button" onClick={this.props.closeModal}>Cancel</Button>
             </Form.Row>
           </Form>
         </div>
