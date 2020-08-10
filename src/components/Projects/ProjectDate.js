@@ -1,7 +1,7 @@
 import React from 'react'
 import { Redirect, withRouter } from 'react-router-dom'
 
-class Project extends React.Component {
+class ProjectDate extends React.Component {
   state = {
     selected: false,
     id: null
@@ -17,10 +17,10 @@ class Project extends React.Component {
           id: this.props.id
         })
       }}>
-        $ {this.props.value}
+        {this.props.projectDate.substring(0, this.props.projectDate.indexOf('T'))}
       </p>
     )
   }
 }
 
-export default withRouter(Project)
+export default withRouter(ProjectDate)

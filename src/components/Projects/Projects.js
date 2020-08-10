@@ -1,9 +1,15 @@
+// readMe and documentation
+// deploy
+
 import React from 'react'
 import { withRouter } from 'react-router-dom'
 import axios from 'axios'
 import apiUrl from './../../apiConfig'
 import Table from 'react-bootstrap/Table'
 import Project from './Project'
+import ProjectName from './ProjectName'
+import ProjectBalance from './ProjectBalance'
+import ProjectDate from './ProjectDate'
 import Create from './Create'
 import Modal from 'react-bootstrap/Modal'
 
@@ -61,6 +67,12 @@ class Projects extends React.Component {
         jsx =
         <React.Fragment>
           <br />
+          <div className="bg-fourth mt-5 font heading round mb-5">
+            Add Some Projects!
+          </div>
+          <br />
+          <br />
+          <br />
           <div className="mt-10">
             <button className="bg-secondary font add round" onClick={() => {
               this.setState({
@@ -94,16 +106,21 @@ class Projects extends React.Component {
             <Table striped bordered hover variant="light">
               <thead>
                 <tr className="font tbl text-fourth">
+                  <th>Created On</th>
                   <th>Name</th>
                   <th>Budget</th>
                   <th>Spent</th>
+                  <th>Balance</th>
                 </tr>
               </thead>
               <tbody className="font tbl">
-                {this.state.projects.reverse().map(project => (
+                {this.state.projects.map(project => (
                   <tr key={project._id} id={project._id}>
                     <td>
-                      <Project updated={this.state.updated} msgAlert={this.props.msgAlert} getRequest={this.getRequest} id={project._id} value={project.name}
+                      <ProjectDate msgAlert={this.props.msgAlert} projectDate={project.createdAt} id={project._id} />
+                    </td>
+                    <td>
+                      <ProjectName updated={this.state.updated} msgAlert={this.props.msgAlert} getRequest={this.getRequest} id={project._id} value={project.name}
                       />
                     </td>
                     <td>
@@ -113,6 +130,9 @@ class Projects extends React.Component {
                     <td>
                       <Project updated={this.state.updated} msgAlert={this.props.msgAlert} getRequest={this.getRequest} id={project._id} value={project.spent}
                       />
+                    </td>
+                    <td className={ project.spent / project.budget >= 0.8 ? 'bg-danger' : 'regular'}>
+                      <ProjectBalance valueSpent={project.spent} msgAlert={this.props.msgAlert} valueBudget={project.budget} id={project._id} />
                     </td>
                   </tr>
                 ))}

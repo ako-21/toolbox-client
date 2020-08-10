@@ -83,6 +83,7 @@ class Create extends React.Component {
               </Col>
             </Form.Row>
             <Form.Row className="mb-3">
+              <span className="mt-2">$</span>
               <Col>
                 <Form.Control
                   onChange={this.handleInputChange}
@@ -92,6 +93,7 @@ class Create extends React.Component {
                   placeholder="Your Budget"
                   required={true} />
               </Col>
+              <span className="mt-2">$</span>
               <Col>
                 <Form.Control
                   onChange={this.handleInputChange}

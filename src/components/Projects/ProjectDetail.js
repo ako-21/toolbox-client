@@ -157,7 +157,7 @@ handleSubmit = () => {
             <Form.Row className="mb-3 d-flex flex-column align-items-center">
               <Col lg={10} className="mb-3">
                 <Form.Label className="font tbl">
-                Budget
+                Budget ($)
                 </Form.Label>
                 <Form.Control
                   onChange={this.handleInputChange}
@@ -169,7 +169,7 @@ handleSubmit = () => {
               </Col>
               <Col lg={10}>
                 <Form.Label className="font tbl">
-                Spent
+                Spent ($)
                 </Form.Label>
                 <Form.Control
                   onChange={this.handleInputChange}
