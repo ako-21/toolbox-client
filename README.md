@@ -1,10 +1,8 @@
 # ToolBox
 
-![ToolBox Logo]()
-
 ToolBox is an app that manages personal DIY projects. It allows users to create projects and manage the budget and steps until the project is complete.
 
-![SnapShot]()
+![SnapShot](https://i.imgur.com/kWobLxr.png)
 
 ## Live Apps
 
@@ -103,10 +101,10 @@ The biggest part of planning was scaling down the big picture to a minimum viabl
 -CSS
 
 ### Wireframe
-![ToolBox Wireframe] ()
+![ToolBox Wireframe] (https://i.imgur.com/kRnK8Ca.jpg)
 
 ### User Relationships
-![ToolBox ERD] ()
+![ToolBox ERD] (https://i.imgur.com/Fv893SR.jpg)
 
 ### User Stories
 -As a user, I want to be able to Sign-up
