@@ -39,6 +39,7 @@ $theme-colors: (
   text-align: center;
   color: #1d2228;
   width: 100%;
+  margin-bottom: 10%;
 }
 .full-width {
   width: 100%;
@@ -95,6 +96,7 @@ $theme-colors: (
   width: 4%;
   height: auto;
   margin-left: 6%;
+  margin-bottom: 10%;
   border-color: #8da242;
   border-style: solid;
   border-radius: 40%;
@@ -107,5 +109,16 @@ body {
   background-attachment: fixed;
 }
 
+.details {
+  margin-bottom: 1%;
+  margin-left: 10%;
+}
+
+.fin {
+  width: 39%;
+  background-color: #a7bc5b;
+  padding-top: 10px;
+  color: #1d2228;
+}
 @import '~bootstrap/scss/bootstrap';
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');

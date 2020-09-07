@@ -6,6 +6,7 @@ import Form from 'react-bootstrap/Form'
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
+import ProjectPhases from './ProjectPhases'
 import messages from './../AutoDismissAlert/messages'
 
 class ProjectDetail extends React.Component {
@@ -19,8 +20,15 @@ class ProjectDetail extends React.Component {
     deleted: false,
     show: false,
     updated: false,
-    cancel: false
+    cancel: false,
+    details: false
   }
+
+showDetails = () => {
+  this.setState({
+    details: !this.state.details
+  })
+}
 
 handleCancel = () => {
   this.setState({
@@ -93,6 +101,7 @@ handleSubmit = () => {
         'Authorization': `Bearer ${this.props.user.token}`
       }
     })
+      .then(response => console.log(response.data))
       .then(response => {
         this.setState({
           project: {
@@ -115,12 +124,15 @@ handleSubmit = () => {
     let jsx
     if (this.state.project === null) {
       jsx = <p>...Loading...</p>
-    } else {
+    } else if (this.state.details === false) {
       jsx = (
         <div>
           <br />
-          <div className="bg-fourth mt-5 mb-3 font heading round">
-            Your DIY Project  &nbsp;  &apos;{this.state.project.name}&apos;
+          <div className="d-flex bg-fourth mt-5 mb-3 font heading round">
+            Your DIY Project  &nbsp;  &apos;{this.state.project.name}&apos; &nbsp;
+            <div className="details">
+              <Button size="sm" variant="third" onClick={this.showDetails}>+ Details</Button>
+            </div>
           </div>
           <Form className="bg-fifth round mb-5" onSubmit={this.handleSubmit}>
             <Form.Row className="d-flex flex-column align-items-end">
@@ -203,6 +215,19 @@ handleSubmit = () => {
               <Button variant="danger" onClick={this.deleteProject}>Yes, Delete</Button>
             </Modal.Footer>
           </Modal>
+        </div>
+      )
+    } else {
+      jsx = (
+        <div>
+          <br />
+          <div className="d-flex bg-fourth mt-5 mb-3 font heading round">
+            Your DIY Project  &nbsp;  &apos;{this.state.project.name}&apos; &nbsp;
+            <div className="details">
+              <Button size="sm" variant="third" onClick={this.showDetails}>- Details</Button>
+            </div>
+          </div>
+          <ProjectPhases name={this.state.project.name} budget={this.state.project.budget} spent={this.state.project.spent}></ProjectPhases>
         </div>
       )
     }
