@@ -6,7 +6,8 @@ $theme-colors: (
   'fourth': #a7bc5b,
   'fifth': #8da242e6,
   'dark': #8da242,
-  'light': #8da242
+  'light': #8da242,
+  'sixth': #F5F5F5
 );
 .white{
   color: white;
@@ -116,9 +117,33 @@ body {
 
 .fin {
   width: 39%;
-  background-color: #a7bc5b;
+  background-color: #a7bc5be6;
   padding-top: 10px;
   color: #1d2228;
 }
+
+h3 {
+  font-size: 1vw;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.phase-card {
+  color: white;
+}
+
+.phase-title {
+
+  border-style: solid;
+  border-radius: 10px;
+  border-color: #F5F5F5;
+}
+
+.inspiration-card {
+  height: 50%;
+}
+
 @import '~bootstrap/scss/bootstrap';
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');

@@ -15,7 +15,9 @@ class ProjectDetail extends React.Component {
       name: '',
       description: '',
       budget: '',
-      spent: ''
+      spent: '',
+      createdAt: '',
+      updatedAt: ''
     },
     deleted: false,
     show: false,
@@ -101,14 +103,15 @@ handleSubmit = () => {
         'Authorization': `Bearer ${this.props.user.token}`
       }
     })
-      .then(response => console.log(response.data))
       .then(response => {
         this.setState({
           project: {
             name: response.data.project.name,
             description: response.data.project.description,
             budget: response.data.project.budget,
-            spent: response.data.project.spent
+            spent: response.data.project.spent,
+            createdAt: response.data.project.createdAt,
+            updatedAt: response.data.project.updatedAt
           }
         })
       })
@@ -227,7 +230,7 @@ handleSubmit = () => {
               <Button size="sm" variant="third" onClick={this.showDetails}>- Details</Button>
             </div>
           </div>
-          <ProjectPhases name={this.state.project.name} budget={this.state.project.budget} spent={this.state.project.spent}></ProjectPhases>
+          <ProjectPhases createdAt={this.state.project.createdAt} updatedAt={this.state.project.updatedAt} name={this.state.project.name} budget={this.state.project.budget} spent={this.state.project.spent}></ProjectPhases>
         </div>
       )
     }
