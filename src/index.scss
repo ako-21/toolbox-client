@@ -141,9 +141,19 @@ h3 {
   border-color: #F5F5F5;
 }
 
-.inspiration-card {
-  height: 50%;
+.card-background {
+  border-width: 2px;
+  border-style: solid;
+  border-color: #8da242;
+  border-radius: 1%;
+  background-color: #8da242e6
 }
+
+.card-body-height {
+  height: 250px;
+}
+
+
 
 @import '~bootstrap/scss/bootstrap';
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');

@@ -2,6 +2,11 @@ import React from 'react'
 import Moment from 'react-moment'
 import Card from 'react-bootstrap/Card'
 import { withRouter } from 'react-router-dom'
+import { ReactTinyLink } from 'react-tiny-link'
+import Inspirations from './Inspirations'
+// import Button from 'react-bootstrap/Button'
+// import Form from 'react-bootstrap/Form'
+// import Col from 'react-bootstrap/Col'
 
 class ProjectPhases extends React.Component {
   state = {
@@ -27,46 +32,51 @@ class ProjectPhases extends React.Component {
         </div>
         <div className="container-fluid mb-5">
           <div className="row">
-            <div className="col-lg-3 col-md-6 col-sm-12 d-flex justify-content-center">
-              <Card style={{ width: '18rem' }} className="bg-secondary">
-                <Card.Header className="text-center mt-2 mb-2 phase-card font">Brainstorm</Card.Header>
+            <div className="col-lg-3 col-md-6 col-sm-12 d-flex justify-content-center card-background pt-2 pb-2">
+              <Card style={{ width: '18rem' }} className="bg-sixth">
+                <Card.Header className="text-center mt-2 mb-2 phase-card bg-secondary font">Brainstorm</Card.Header>
                 <div className="d-flex flex-column align-items-center">
-                  <Card style={{ width: '15rem' }} className="bg-sixth inspiration-card">
-                    <Card.Title className="text-center mt-2 phase-card phase-title font bg-secondary pt-2 pb-2">Inspiration</Card.Title>
-                    <Card.Body className="bg-sixth overflow-auto">
-                    www.hello.com
-                    www.hello.com
-                    www.hello.com
-                    www.hello.com
-                    www.hello.com
-                    </Card.Body>
-                  </Card>
-                  <Card style={{ width: '15rem' }} className="bg-sixth inspiration-card">
-                    <Card.Title className="text-center mt-2 phase-card phase-title font bg-secondary pt-2 pb-2">Instruction</Card.Title>
-                    <Card.Body className="bg-sixth overflow-auto">
-                  www.hello.com
-                  www.hello.com
-                  www.hello.com
-                  www.hello.com
-                  www.hello.com
-                    </Card.Body>
-                  </Card>
+                  <Card.Title className="text-center mt-2 font p-2">Inspiration</Card.Title>
+                  <Card.Body style={{ width: '15rem' }} className="bg-sixth">
+                    <Inspirations user={this.props.user} match={this.props.match}></Inspirations>
+                  </Card.Body>
+                  <Card.Title className="text-center mt-2 font p-2">Instruction</Card.Title>
+                  <Card.Body style={{ width: '15rem' }} className="bg-sixth">
+                    <div className="overflow-auto card-body-height">
+                      <ReactTinyLink cardSize="large" showGraphic={false} maxLine={4} minLine={1} url="https://www.youtube.com/watch?v=3YK96_qfc-Y&t=9s"></ReactTinyLink>
+                    </div>
+                  </Card.Body>
                 </div>
               </Card>
             </div>
-            <div className="col-lg-3 col-md-6 col-sm-12 d-flex justify-content-center">
-              <Card style={{ width: '18rem' }} className="bg-secondary">
-                <Card.Title className="text-center mt-2 phase-card font">Planning</Card.Title>
+            <div className="col-lg-3 col-md-6 col-sm-12 d-flex justify-content-center card-background pt-2 pb-2">
+              <Card style={{ width: '18rem' }} className="bg-sixth">
+                <Card.Header className="text-center mt-2 mb-2 phase-card bg-secondary font">Planning</Card.Header>
+                <div className="d-flex flex-column align-items-center">
+                  <Card.Body style={{ width: '15rem' }} className="bg-sixth overflow-auto card-body-height">
+                    <ReactTinyLink cardSize="large" showGraphic={false} maxLine={4} minLine={1} url="https://youtu.be/3YK96_qfc-Y"></ReactTinyLink>
+                  </Card.Body>
+                </div>
               </Card>
             </div>
-            <div className="col-lg-3 col-md-6 col-sm-12 d-flex justify-content-center">
-              <Card style={{ width: '18rem' }} className="bg-secondary">
-                <Card.Title className="text-center mt-2 phase-card font">Doing</Card.Title>
+            <div className="col-lg-3 col-md-6 col-sm-12 d-flex justify-content-center card-background pt-2 pb-2">
+              <Card style={{ width: '18rem' }} className="bg-sixth">
+                <Card.Header className="text-center mt-2 mb-2 phase-card bg-secondary font">Doing</Card.Header>
+                <div className="d-flex flex-column align-items-center">
+                  <Card.Body style={{ width: '15rem' }} className="bg-sixth overflow-auto card-body-height">
+                    <ReactTinyLink cardSize="large" showGraphic={false} maxLine={4} minLine={1} url="https://youtu.be/3YK96_qfc-Y"></ReactTinyLink>
+                  </Card.Body>
+                </div>
               </Card>
             </div>
-            <div className="col-lg-3 col-md-6 col-sm-12 d-flex justify-content-center">
-              <Card style={{ width: '18rem' }} className="bg-secondary">
-                <Card.Title className="text-center mt-2 phase-card font">Done</Card.Title>
+            <div className="col-lg-3 col-md-6 col-sm-12 d-flex justify-content-center card-background pt-2 pb-2">
+              <Card style={{ width: '18rem' }} className="bg-sixth">
+                <Card.Header className="text-center mt-2 mb-2 phase-card bg-secondary font">Done</Card.Header>
+                <div className="d-flex flex-column align-items-center">
+                  <Card.Body style={{ width: '15rem' }} className="bg-sixth overflow-auto card-body-height">
+                    <ReactTinyLink cardSize="large" showGraphic={false} maxLine={4} minLine={1} url="https://youtu.be/3YK96_qfc-Y"></ReactTinyLink>
+                  </Card.Body>
+                </div>
               </Card>
             </div>
           </div>

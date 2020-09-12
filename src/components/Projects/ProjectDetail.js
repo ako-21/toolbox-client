@@ -230,7 +230,7 @@ handleSubmit = () => {
               <Button size="sm" variant="third" onClick={this.showDetails}>- Details</Button>
             </div>
           </div>
-          <ProjectPhases createdAt={this.state.project.createdAt} updatedAt={this.state.project.updatedAt} name={this.state.project.name} budget={this.state.project.budget} spent={this.state.project.spent}></ProjectPhases>
+          <ProjectPhases user={this.props.user} match={this.props.match} createdAt={this.state.project.createdAt} updatedAt={this.state.project.updatedAt} name={this.state.project.name} budget={this.state.project.budget} spent={this.state.project.spent}></ProjectPhases>
         </div>
       )
     }
